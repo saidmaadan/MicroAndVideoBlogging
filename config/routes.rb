@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   match 'users/:id' => 'users#show_current_user_profile', via: [:get]
 
   match '/users/profile/:username' => 'users#show_user_profile', via: [:get]
-
+  match '/posts/search' => 'posts#search', via: [:get]
 
   get '/follow' => "users#follow"
   get '/unfollow' => "users#unfollow"
@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   get '/following/:id'  =>  "users#following"
 
   get '/users/:user_id/is_following' => "users#is_following"
+
+  get '/send_password' => 'users#reset_password'
+
+  resources :posts do
+    resources :comments
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -65,11 +65,11 @@ class UsersController < ApplicationController
       end
   end
 
-  # def reset_password
-  #   @user = User.find_by_email(params[:user_email])
-  #   @user.send_reset_password_instructions
-  #   render json: @user
-  # end
+  def reset_password
+    @user = User.find_by_email(params[:user_email])
+    @user.send_reset_password_instructions
+    render json: @user
+  end
 
   private
     def user_params
